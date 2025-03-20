@@ -3,3 +3,5 @@ workflow-aggregator
 git
 email-ext
 maven-plugin
+configuration-as-code
+docker-plugin

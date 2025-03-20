@@ -1,4 +1,4 @@
-FROM jenkins:lts
+FROM jenkins/jenkins:lts
 
 # Switch to root user
 USER root
@@ -10,7 +10,8 @@ RUN apt-get update && \
 
 # Set Java environment variables
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-ENV PATH="$JAVA_HOME/bin:$PATH"
+ENV MAVEN_HOME=/usr/share/maven
+ENV PATH="$MAVEN_HOME/bin:$JAVA_HOME/bin:$PATH"
 
 # Install Google Chrome and ChromeDriver for Selenium
 RUN apt-get install -y wget && \
