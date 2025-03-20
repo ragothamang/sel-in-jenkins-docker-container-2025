@@ -13,6 +13,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV MAVEN_HOME=/usr/share/maven
 ENV PATH="$MAVEN_HOME/bin:$JAVA_HOME/bin:$PATH"
 ENV GIT_REPO="https://github.com/ragothamang/sel-in-jenkins-docker-container-2025.git"
+ENV WORK_DIR="/var/jenkins_home/workspace/automation-suite"
 
 # Clone the repository inside the Jenkins container at build time
 RUN git clone $GIT_REPO $WORK_DIR || (cd $WORK_DIR && git pull)
