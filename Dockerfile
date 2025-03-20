@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts
+FROM jenkins:lts
 
 # Switch to root user
 USER root
