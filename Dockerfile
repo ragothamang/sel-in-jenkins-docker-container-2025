@@ -29,8 +29,15 @@ RUN CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_
 COPY jenkins-plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
 
+
+# Copy entrypoint script (will handle cloning at runtime)
+COPY entrypoint.sh /entrypoint.sh
+RUN chown root:root /entrypoint.sh && chmod +x /entrypoint.sh
+
 # Ensure Jenkins user owns its home directory
 RUN chown -R jenkins:jenkins /var/jenkins_home
+
+
 
 # Switch to Jenkins user
 USER jenkins
@@ -38,9 +45,6 @@ USER jenkins
 # Set working directory
 WORKDIR /var/jenkins_home
 
-# Copy entrypoint script (will handle cloning at runtime)
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
 # Entrypoint script to initialize Jenkins
 ENTRYPOINT ["/entrypoint.sh"]
