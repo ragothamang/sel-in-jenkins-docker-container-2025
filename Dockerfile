@@ -34,7 +34,8 @@ RUN chown -R jenkins:jenkins /var/jenkins_home
 
 # Copy entrypoint script (will handle cloning at runtime)
 COPY entrypoint.sh /entrypoint.sh
-RUN chown root:root /entrypoint.sh && chmod +x /entrypoint.sh
+RUN chmod 755 /entrypoint.sh && chown jenkins:jenkins /entrypoint.sh
+#RUN chown root:root /entrypoint.sh && chmod +x /entrypoint.sh
 
 # Switch to Jenkins user
 USER jenkins
