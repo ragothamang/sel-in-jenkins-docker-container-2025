@@ -1,0 +1,40 @@
+# Maven target directory
+target/
+
+# Logs and temporary files
+*.log
+*.tmp
+hs_err_pid*
+!src/main/resources/*.log
+
+# Compiled Java class files
+*.class
+
+# IDE-specific files (IntelliJ IDEA, Eclipse, NetBeans)
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.nbproject/
+
+# Dependency directories
+.m2/
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# VS Code settings
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment/configuration files
+.env
+*.properties
