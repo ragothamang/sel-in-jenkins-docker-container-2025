@@ -27,17 +27,19 @@ public class BaseTest {
         ExtentSparkReporter sparkReporter = new ExtentSparkReporter("extent-reports/extent-report.html");
         extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
-//
-//        // Setup WebDriver using WebDriverManager
-//        WebDriverManager.firefoxdriver().setup();
-//        driver = new FirefoxDriver();
+
+      FirefoxOptions options = new FirefoxOptions();
+      options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage"); // Run without GUI (important inside a container)
+//        Setup WebDriver using WebDriverManager
+        WebDriverManager.firefoxdriver().setup();
+        driver = new FirefoxDriver(options);
         
-        FirefoxOptions options = new FirefoxOptions();
-        try {
-            driver = new RemoteWebDriver(new URL("http://172.17.0.2:4444/wd/hub"), options);
-        } catch (MalformedURLException e) {
-            throw new RuntimeException("Failed to connect to Selenium Grid", e);
-        }
+
+//        try {
+//            driver = new RemoteWebDriver(new URL("http://172.17.0.2:4444/wd/hub"), options);
+//        } catch (MalformedURLException e) {
+//            throw new RuntimeException("Failed to connect to Selenium Grid", e);
+//        }
         
         driver.manage().window().maximize();
     }
